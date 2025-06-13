@@ -25,8 +25,7 @@ Files are named as: NxM_Energy_Progr.txt, where:
 Example: 5x2_high_3.txt corresponds to 5 jobs, 2 machines, high energy limit, and is the 3rd instance of the group.
 
 
-
-## 2. FILE FORMAT
+## 2. INSTANCE FILE FORMAT
 Instances of both set are built the same way. Each instance file is organized as follows:
 - int number of jobs;
 - int number of machines;
@@ -49,8 +48,41 @@ Instances of both set are built the same way. Each instance file is organized as
   0 12 1 12
   Means that the job can be assigned to machine 0 with resource consumption 12, and to machine 1 resource consumption 12.
 
+## 3. PREREQUISITES 
+### EXTERNAL SOLVERS
+1. Google OR-Tools (version ≥ 9.9). Required for the ORTools() method (CP-SAT solver). OR-Tools C++ package must be installed.
+2. Gurobi Optimizer (version ≥ 10 recommended). Required for the MILP_2mach() method. A valid Gurobi license is required.
+3. IBM ILOG CPLEX Optimization Studio (CP Optimizer module) (version ≥ 22 recommended). Required for the CPOpt() method. A valid CPLEX/CP Optimizer license is required.
 
+## 4. EXECUTING THE CODE
+To execute the code, run the following command from the terminal, providing the required arguments in the specified order:
+./executable_path instance_file_path results_file_path solution_file_path threshold time_limit
+Where:
+- executable_path: path to the compiled executable;
+- instance_file_path: path to the input instance file;
+- results_file_path: path where the results will be saved;
+- solution_file_path: path where the solution details will be saved;
+- threshold: threshold value (problem-dependent);
+- time_limit: maximum computation time in seconds.
 
+## 5. OUTPUT FILE FORMAT
+The results file contains the following fields (semicolon-separated values):
+- Instance name: name of the instance;
+- Optimal: optimality status (1 if optimal, 0 otherwise);
+- LB: final lower bound;
+- UB: final upper bound;
+- Time: total solution time in seconds;
+- BB iter: number of branch-and-bound iterations;
+- BB Nodes: number of nodes explored in branch-and-bound;
+- BB Time: time spent in branch-and-bound in seconds;
+- UB: best upper bound found;
+- Time UB: time to find the best upper bound in seconds;
+- LB0: maximal lower bound from the literature;
+- LB3: lower bound calculated with column generation;
+- Time LB: time spent computing lower bounds in seconds;
+- Lifting Time: time spent in lifting procedures in seconds.
+
+## 6. REFERENCES
 [1] Fanjul-Peyro, L., Perea, F., and Ruiz, R. (2017). Models and matheuristics for the unrelated parallel
 machine scheduling problem with additional resources. European Journal of Operational Research,
 260(2):482–493.
