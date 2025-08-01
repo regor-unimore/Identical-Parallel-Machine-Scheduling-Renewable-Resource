@@ -1,4 +1,4 @@
-# Identical-Parallel-Machine-Scheduling-Renewable-Resource
+# Energy-Constrained-Identical-Parallel-Machine-Scheduling
 
 This dataset contains instances for the study of parallel machine scheduling with a single renewable resource constraint. Two different sets of instances are provided. The first set includes the original instances from [1]. For our case of identical machines, we consider only the processing times and resource requirements corresponding to machine 0. The second set consists of adapted instances based on the exact methods studied in [2], where the fixed energy consumption of idle machines has been removed.
 
